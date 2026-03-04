@@ -5,7 +5,6 @@ from database import get_db
 from model import Portal, User
 from schema import PortalCreate, Portal
 from crud import create_portal, get_user_portals
-from sqlalchemy import func
 
 router = APIRouter(prefix="/portals", tags=["portals"])
 
@@ -17,7 +16,6 @@ def get_current_user(db: Session = Depends(get_db)):
 @router.post("/", response_model=Portal)
 def create_portal_endpoint(
         portal: PortalCreate,
-        #current_user=Depends(get_current_user),
         db: Session = Depends(get_db)
 ):
     return create_portal(db, portal)
