@@ -1,17 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
-
-
 
 # UPDATE YOUR POSTGRES CREDENTIALS
-url = os.getenv('DATABASE_URL')
-engine = create_engine(url)
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:San1320!@localhost:5432/tts_project"
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
